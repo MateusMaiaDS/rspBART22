@@ -58,8 +58,8 @@ rspBART <- function(x_train,
   # }
 
   # Getting the current prediction for that tree
-  y_hat_train <- matrix(0,nrow = nrow(data$x_train),ncol = length(data$basis_subindex))
-  y_hat_test <- matrix(0,nrow = nrow(data$x_test),ncol = length(data$basis_subindex))
+  # y_hat_train <- matrix(0,nrow = nrow(data$x_train),ncol = length(data$basis_subindex))
+  # y_hat_test <- matrix(0,nrow = nrow(data$x_test),ncol = length(data$basis_subindex))
 
 
   # Vector to intialise the stumps
@@ -963,7 +963,7 @@ rspBART <- function(x_train,
       # Main effect range difference
       range_basis_j_predictions <- numeric(length = length(main_effects_train_list_norm))
       range_tree_bais_j_predictions <- matrix(NA, ncol = n_tree, nrow = length(main_effects_train_list_norm))
-      n_burn_plot <- 100
+      n_burn_plot <- 200
 
       par(mfrow = c(2,floor(NCOL(data$x_train)/2)))
       for(jj in 1:12){

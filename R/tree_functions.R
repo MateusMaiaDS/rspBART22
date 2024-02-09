@@ -1268,10 +1268,9 @@ updateGamma <- function(tree,
     # == Starting to iterate over those coefficients ==========#
     for(jj in 1:length(node_index_var)){
 
-
       leaf_basis_subindex <- unlist(data$basis_subindex[node_index_var[jj]]) # Recall to the unique() here too
       current_betas <- cu_t$betas_vec[leaf_basis_subindex]
-      pred_splines <- pred_splines + (data$B_train[[jj]][cu_t$train_index,,drop=FALSE]%*%(current_betas))
+      pred_splines <- pred_splines + (data$B_train[[node_index_var[jj]]][cu_t$train_index,,drop=FALSE]%*%(current_betas))
     }
 
     res_leaf <- sum(matrix(curr_part_res[cu_t$train_index], ncol=1)) - sum((pred_splines)) # Also removing the intercept
@@ -1280,7 +1279,7 @@ updateGamma <- function(tree,
     s_gamma <- n_leaf+ data$tau_gamma
 
     gamma_mean <- res_leaf/s_gamma
-    gamma_sd <- sqrt(1/s_gamma)
+    gamma_sd <- sqrt(1/(s_gamma*data$tau))
 
     tree[[t_nodes_names[i]]]$gamma <- stats::rnorm(n = 1,mean = gamma_mean,sd = gamma_sd)
 

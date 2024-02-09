@@ -117,8 +117,8 @@ beta <- 2
 df <- 1
 sigquant <- 0.9
 kappa <- 2
-nIknots <- 20
-dif_order <- 2
+nIknots <- 10
+dif_order <- 1
 tau <- 1
 scale_bool <- TRUE
 stump <- FALSE
@@ -145,7 +145,7 @@ eta <- 1e-6
 a_delta <- 0.5
 d_delta <- 0.5
 pen_basis <- FALSE
-tau_gamma <- 1
+tau_gamma <- 16
 
 set.seed(seed_)
 
